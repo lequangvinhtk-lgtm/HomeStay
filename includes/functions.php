@@ -162,3 +162,42 @@ function get_status_text($status) {
 function get_property_type_text($type) {
     return $type === 'homestay' ? 'Homestay' : 'Khách sạn';
 }
+
+/**
+ * Lấy cấu hình thông tin ngân hàng & thanh toán
+ */
+function get_payment_config() {
+    $config_file = __DIR__ . '/../config/payment.php';
+    if (file_exists($config_file)) {
+        return require $config_file;
+    }
+    return [
+        'bank_id'         => 'MB',
+        'bank_name'       => 'MBBank (Ngân hàng TMCP Quân Đội)',
+        'account_no'      => '0901234567',
+        'account_name'    => 'NGUYEN QUANG VINH',
+        'transfer_prefix' => 'STAYEASY',
+        'custom_qr_image' => '',
+    ];
+}
+
+/**
+ * Tạo link ảnh mã QR thanh toán theo chuẩn VietQR tự động
+ */
+function get_vietqr_url($amount, $booking_code) {
+    $config = get_payment_config();
+
+    // Nếu có cài đặt ảnh QR tùy chỉnh thì ưu tiên hiển thị ảnh đó
+    if (!empty($config['custom_qr_image']) && file_exists(__DIR__ . '/../assets/images/' . $config['custom_qr_image'])) {
+        return '/assets/images/' . $config['custom_qr_image'];
+    }
+
+    $bank_id      = urlencode($config['bank_id'] ?? 'MB');
+    $account_no   = urlencode($config['account_no'] ?? '0901234567');
+    $account_name = urlencode($config['account_name'] ?? 'NGUYEN QUANG VINH');
+    $prefix       = $config['transfer_prefix'] ?? 'STAYEASY';
+    $add_info     = urlencode($prefix . ' ' . $booking_code);
+    $amount_val   = (int)$amount;
+
+    return "https://img.vietqr.io/image/{$bank_id}-{$account_no}-compact2.png?amount={$amount_val}&addInfo={$add_info}&accountName={$account_name}";
+}

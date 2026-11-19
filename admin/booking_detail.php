@@ -334,6 +334,11 @@ require_once __DIR__ . '/../includes/admin_header.php';
 
                     <!-- Form ghi nhận thanh toán (nếu đơn đang ở confirmed, checked_in hoặc checked_out) -->
                     <?php if (in_array($booking['status'], ['confirmed', 'checked_in', 'checked_out'])): ?>
+                        <div class="mb-2">
+                            <button type="button" class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#adminQrModal">
+                                <i class="bi bi-qr-code-scan me-1"></i> Mở mã VietQR cho khách quét
+                            </button>
+                        </div>
                         <div class="border rounded p-3 bg-light">
                             <h6 class="fw-bold mb-2 small"><i class="bi bi-credit-card me-1"></i> Ghi nhận thanh toán</h6>
                             <form action="" method="POST">
@@ -430,6 +435,39 @@ require_once __DIR__ . '/../includes/admin_header.php';
                         <i class="bi bi-lock-fill me-1"></i> Đơn này đã đóng và không thể thay đổi trạng thái nữa.
                     </div>
                 <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Quét mã VietQR cho Khách -->
+<?php 
+$admin_qr_url = get_vietqr_url($booking['total_amount'], $booking['booking_code']);
+$p_config = get_payment_config();
+?>
+<div class="modal fade" id="adminQrModal" tabindex="-1" aria-labelledby="adminQrModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="adminQrModalLabel">
+                    <i class="bi bi-qr-code text-primary me-2"></i>Mã VietQR Thu tiền
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="p-2 bg-light rounded border mb-3 d-inline-block">
+                    <img src="<?= e($admin_qr_url) ?>" alt="VietQR" class="img-fluid rounded" style="max-width: 280px;">
+                </div>
+                <div class="fw-bold fs-5 text-danger mb-1"><?= format_money($booking['total_amount']) ?></div>
+                <div class="small text-muted mb-2">Đơn: <?= e($booking['booking_code']) ?></div>
+                <div class="p-2 bg-light rounded small text-start border">
+                    <div><strong>Ngân hàng:</strong> <?= e($p_config['bank_name']) ?></div>
+                    <div><strong>STK:</strong> <?= e($p_config['account_no']) ?> (<?= e($p_config['account_name']) ?>)</div>
+                    <div><strong>Nội dung:</strong> <?= e($p_config['transfer_prefix'] ?? 'STAYEASY') ?> <?= e($booking['booking_code']) ?></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>

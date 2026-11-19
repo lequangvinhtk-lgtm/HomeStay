@@ -225,11 +225,23 @@ require_once __DIR__ . '/includes/header.php';
                     <div class="p-3 rounded-3 <?= $payment ? 'bg-success bg-opacity-10 text-success border border-success' : 'bg-warning bg-opacity-10 text-dark border border-warning' ?>">
                         <?php if ($payment): ?>
                             <div class="fw-bold"><i class="bi bi-check-circle-fill me-1"></i> ĐÃ THANH TOÁN ĐỦ</div>
-                            <small class="d-block mt-1">Hình thức: <?= $payment['method'] === 'cash' ? 'Tiền mặt tại quầy' : 'Chuyển khoản ngân hàng' ?></small>
+                            <small class="d-block mt-1">Hình thức: <?= $payment['method'] === 'cash' ? 'Tiền mặt tại quầy' : 'Chuyển khoản ngân hàng (VietQR)' ?></small>
                             <small class="d-block">Thời gian: <?= format_datetime($payment['paid_at']) ?></small>
+                            <div class="mt-2 pt-2 border-top">
+                                <a href="/payment.php?booking_id=<?= $booking['id'] ?>" class="btn btn-sm btn-outline-success w-100">
+                                    <i class="bi bi-receipt me-1"></i>Xem biên nhận thanh toán
+                                </a>
+                            </div>
                         <?php else: ?>
                             <div class="fw-bold"><i class="bi bi-clock-history me-1"></i> CHƯA THANH TOÁN</div>
-                            <small class="d-block mt-1">Thanh toán bằng tiền mặt hoặc chuyển khoản khi nhận phòng hoặc theo hướng dẫn của Quản trị viên.</small>
+                            <?php if ($booking['status'] !== 'cancelled' && $booking['status'] !== 'rejected'): ?>
+                                <a href="/payment.php?booking_id=<?= $booking['id'] ?>" class="btn btn-success w-100 fw-bold py-2 mt-3 shadow-sm">
+                                    <i class="bi bi-qr-code-scan me-2"></i>Thanh toán ngay bằng VietQR
+                                </a>
+                                <small class="d-block text-muted text-center mt-2">Hoặc bạn có thể chọn thanh toán tiền mặt trực tiếp khi nhận phòng.</small>
+                            <?php else: ?>
+                                <small class="d-block mt-1 text-muted">Đơn phòng đã kết thúc hoặc bị hủy.</small>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 </div>
