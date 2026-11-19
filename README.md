@@ -155,3 +155,4 @@ hotel-booking/
 
 - Xem chi tiết 12 kịch bản kiểm thử tại file [docs/test-cases.md](file:///home/quangvinh/Downloads/DoAnCoSo2_HomestayDonGIan/docs/test-cases.md).
 - Xem hướng dẫn trả lời vấn đáp giáo viên về 5 chức năng chính kèm câu lệnh SQL tại file [docs/giai-thich-bao-ve.md](file:///home/quangvinh/Downloads/DoAnCoSo2_HomestayDonGIan/docs/giai-thich-bao-ve.md).
+# HomeStay
