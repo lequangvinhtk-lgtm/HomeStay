@@ -1,5 +1,5 @@
 # TÀI LIỆU HƯỚNG DẪN BẢO VỆ ĐỒ ÁN (DÀNH CHO SINH VIÊN)
-**Đề tài: Website Đặt phòng Khách sạn & Homestay (StayEasy)**
+**Đề tài: Website Đặt phòng Khách sạn & Homestay (ItachiHome)**
 *Công nghệ: PHP 8 thuần (thủ tục) + MySQL + PDO (Prepared Statements) + Bootstrap 5*
 
 ---

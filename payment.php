@@ -63,7 +63,7 @@ $payment = $stmtPayment->fetch();
 
 // Cấu hình ngân hàng & QR
 $payment_config = get_payment_config();
-$transfer_content = ($payment_config['transfer_prefix'] ?? 'STAYEASY') . ' ' . $booking['booking_code'];
+$transfer_content = ($payment_config['transfer_prefix'] ?? 'ITACHIHOME') . ' ' . $booking['booking_code'];
 $qr_url = get_vietqr_url($booking['total_amount'], $booking['booking_code']);
 
 // Xử lý xác nhận thanh toán chuyển khoản (POST)

@@ -1,4 +1,4 @@
-# STAYEASY - WEBSITE ĐẶT PHÒNG KHÁCH SẠN & HOMESTAY
+# ITACHIHOME - WEBSITE ĐẶT PHÒNG KHÁCH SẠN & HOMESTAY
 > **Đồ án cơ sở 2 - Dành cho sinh viên năm 2**  
 > Ngôn ngữ: **PHP 8 thuần (procedural - thủ tục) + PDO + MySQL + Bootstrap 5 CDN**  
 > Môi trường triển khai: **Ubuntu / Linux (Apache, PHP, MySQL)**

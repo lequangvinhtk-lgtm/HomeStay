@@ -10,7 +10,7 @@ $user = current_user();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($page_title) ? e($page_title) . ' - ' : '' ?>StayEasy | Đặt phòng Khách sạn & Homestay</title>
+    <title><?= isset($page_title) ? e($page_title) . ' - ' : '' ?>ItachiHome | Đặt phòng Khách sạn & Homestay</title>
     <!-- Bootstrap 5 CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons CDN -->
@@ -24,7 +24,7 @@ $user = current_user();
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
     <div class="container">
         <a class="navbar-brand fw-bold" href="/index.php">
-            <i class="bi bi-building-check me-2"></i>StayEasy
+            <i class="bi bi-building-check me-2"></i>ItachiHome
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbar" aria-controls="userNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

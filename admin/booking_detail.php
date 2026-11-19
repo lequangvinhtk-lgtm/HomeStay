@@ -463,7 +463,7 @@ $p_config = get_payment_config();
                 <div class="p-2 bg-light rounded small text-start border">
                     <div><strong>Ngân hàng:</strong> <?= e($p_config['bank_name']) ?></div>
                     <div><strong>STK:</strong> <?= e($p_config['account_no']) ?> (<?= e($p_config['account_name']) ?>)</div>
-                    <div><strong>Nội dung:</strong> <?= e($p_config['transfer_prefix'] ?? 'STAYEASY') ?> <?= e($booking['booking_code']) ?></div>
+                    <div><strong>Nội dung:</strong> <?= e($p_config['transfer_prefix'] ?? 'ITACHIHOME') ?> <?= e($booking['booking_code']) ?></div>
                 </div>
             </div>
             <div class="modal-footer">

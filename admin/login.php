@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập Quản trị - StayEasy</title>
+    <title>Đăng nhập Quản trị - ItachiHome</title>
     <!-- Bootstrap 5 CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons CDN -->
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-circle d-inline-block mb-3">
                             <i class="bi bi-shield-lock-fill" style="font-size: 2.5rem;"></i>
                         </div>
-                        <h4 class="fw-bold">StayEasy Admin</h4>
+                        <h4 class="fw-bold">ItachiHome Admin</h4>
                         <p class="text-muted small">Cổng thông tin quản trị hệ thống</p>
                     </div>
 

@@ -2,7 +2,7 @@
 
 <footer class="bg-white border-top py-3 mt-auto">
     <div class="container-fluid px-4 text-center text-muted small">
-        <span>&copy; <?= date('Y') ?> StayEasy - Hệ thống quản lý đặt phòng Khách sạn & Homestay (Admin Panel).</span>
+        <span>&copy; <?= date('Y') ?> ItachiHome - Hệ thống quản lý đặt phòng Khách sạn & Homestay (Admin Panel).</span>
     </div>
 </footer>
 

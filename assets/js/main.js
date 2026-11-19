@@ -1,5 +1,5 @@
 /**
- * JavaScript tiện ích nhỏ cho StayEasy
+ * JavaScript tiện ích nhỏ cho ItachiHome
  * 1. Xác nhận trước khi xóa hoặc hủy
  * 2. Tính nhanh số đêm và tổng tiền tạm tính trên form đặt phòng
  */

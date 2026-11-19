@@ -1,6 +1,6 @@
 <?php
 /**
- * Trang chủ Website Đặt phòng Khách sạn & Homestay (StayEasy)
+ * Trang chủ Website Đặt phòng Khách sạn & Homestay (ItachiHome)
  */
 
 require_once __DIR__ . '/config/db.php';

@@ -1,4 +1,4 @@
-# TÀI LIỆU TEST CASES HỆ THỐNG ĐẶT PHÒNG KHÁCH SẠN & HOMESTAY (StayEasy)
+# TÀI LIỆU TEST CASES HỆ THỐNG ĐẶT PHÒNG KHÁCH SẠN & HOMESTAY (ItachiHome)
 
 Tài liệu này bao gồm 12 kịch bản kiểm thử (Test Cases) quan trọng nhất phục vụ việc kiểm tra và báo cáo bảo vệ đồ án.
 

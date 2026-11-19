@@ -83,7 +83,7 @@ require_once __DIR__ . '/includes/header.php';
                     <div class="text-center mb-4">
                         <i class="bi bi-box-arrow-in-right text-primary" style="font-size: 3rem;"></i>
                         <h3 class="fw-bold mt-2">Đăng nhập</h3>
-                        <p class="text-muted small">Chào mừng bạn quay trở lại với StayEasy</p>
+                        <p class="text-muted small">Chào mừng bạn quay trở lại với ItachiHome</p>
                     </div>
 
                     <?php if (!empty($error)): ?>

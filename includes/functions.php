@@ -176,7 +176,7 @@ function get_payment_config() {
         'bank_name'       => 'MBBank (Ngân hàng TMCP Quân Đội)',
         'account_no'      => '0901234567',
         'account_name'    => 'NGUYEN QUANG VINH',
-        'transfer_prefix' => 'STAYEASY',
+        'transfer_prefix' => 'ITACHIHOME',
         'custom_qr_image' => '',
     ];
 }
@@ -195,7 +195,7 @@ function get_vietqr_url($amount, $booking_code) {
     $bank_id      = urlencode($config['bank_id'] ?? 'MB');
     $account_no   = urlencode($config['account_no'] ?? '0901234567');
     $account_name = urlencode($config['account_name'] ?? 'NGUYEN QUANG VINH');
-    $prefix       = $config['transfer_prefix'] ?? 'STAYEASY';
+    $prefix       = $config['transfer_prefix'] ?? 'ITACHIHOME';
     $add_info     = urlencode($prefix . ' ' . $booking_code);
     $amount_val   = (int)$amount;
 

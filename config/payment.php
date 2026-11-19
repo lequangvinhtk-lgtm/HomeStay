@@ -17,8 +17,8 @@ return [
     // Tên chủ tài khoản (Viết hoa không dấu)
     'account_name' => 'LE QUANG VINH',
 
-    // Cú pháp nội dung chuyển khoản tiền tố (VD: STAYEASY BK...)
-    'transfer_prefix' => 'STAYEASY',
+    // Cú pháp nội dung chuyển khoản tiền tố (VD: ITACHIHOME BK...)
+    'transfer_prefix' => 'ITACHIHOME',
 
     // Ảnh QR tĩnh dự phòng (nếu bạn muốn dùng ảnh chụp mã QR từ app ngân hàng)
     // Lưu file ảnh vào: assets/images/qr_custom.jpg hoặc để rỗng để dùng VietQR tự động

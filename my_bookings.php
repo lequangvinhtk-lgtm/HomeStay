@@ -56,7 +56,7 @@ require_once __DIR__ . '/includes/header.php';
 <div class="bg-primary text-white py-4 mb-4">
     <div class="container">
         <h2 class="fw-bold mb-1"><i class="bi bi-calendar-check me-2"></i>Đơn đặt phòng của tôi</h2>
-        <p class="mb-0 opacity-75">Theo dõi trạng thái và lịch sử đặt phòng của bạn tại StayEasy</p>
+        <p class="mb-0 opacity-75">Theo dõi trạng thái và lịch sử đặt phòng của bạn tại ItachiHome</p>
     </div>
 </div>
 
