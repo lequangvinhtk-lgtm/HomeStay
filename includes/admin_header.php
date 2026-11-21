@@ -63,7 +63,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= in_array($current_page, ['customers.php', 'customer_detail.php']) ? 'active fw-bold' : '' ?>" href="/admin/customers.php">
-                        <i class="bi bi-people me-1"></i>Khách hàng
+                        <i class="bi bi-people me-1"></i>Tài khoản & Phân quyền
                     </a>
                 </li>
                 <li class="nav-item">

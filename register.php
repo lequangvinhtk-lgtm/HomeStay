@@ -1,7 +1,6 @@
 <?php
 /**
- * Trang Đăng ký tài khoản Khách hàng mới
- * Chỉ đăng ký tài khoản với vai trò 'customer'
+ * Trang Đăng ký tài khoản mới (Hỗ trợ đăng ký Khách hàng hoặc Quản trị viên)
  */
 
 require_once __DIR__ . '/config/db.php';
@@ -19,6 +18,7 @@ $old_data = [
     'email'     => '',
     'phone'     => '',
     'address'   => '',
+    'role'      => 'customer',
 ];
 
 // Xử lý khi người dùng bấm nút Đăng ký (phương thức POST)
@@ -30,12 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address          = trim($_POST['address'] ?? '');
     $password         = $_POST['password'] ?? '';
     $password_confirm = $_POST['password_confirm'] ?? '';
+    $role             = in_array($_POST['role'] ?? '', ['customer', 'admin']) ? $_POST['role'] : 'customer';
 
     $old_data = [
         'full_name' => $full_name,
         'email'     => $email,
         'phone'     => $phone,
         'address'   => $address,
+        'role'      => $role,
     ];
 
     // 2. Kiểm tra dữ liệu hợp lệ (Validation)
@@ -80,19 +82,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Mã hóa mật khẩu bảo mật bằng bcrypt
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-            // Thêm vào bảng users với role luôn là customer
-            $stmtUser = $pdo->prepare("INSERT INTO `users` (`email`, `password_hash`, `role`, `created_at`) VALUES (?, ?, 'customer', NOW())");
-            $stmtUser->execute([$email, $password_hash]);
+            // Thêm vào bảng users với role được chọn (customer hoặc admin)
+            $stmtUser = $pdo->prepare("INSERT INTO `users` (`email`, `password_hash`, `role`, `created_at`) VALUES (?, ?, ?, NOW())");
+            $stmtUser->execute([$email, $password_hash, $role]);
             $new_user_id = $pdo->lastInsertId();
 
-            // Thêm thông tin tương ứng vào bảng customers
+            // Thêm thông tin cá nhân tương ứng vào bảng customers
             $stmtCustomer = $pdo->prepare("INSERT INTO `customers` (`user_id`, `full_name`, `phone`, `address`) VALUES (?, ?, ?, ?)");
             $stmtCustomer->execute([$new_user_id, $full_name, $phone, $address]);
 
             $pdo->commit();
 
-            set_flash('success', 'Đăng ký tài khoản thành công! Bạn có thể đăng nhập ngay bây giờ.');
-            redirect('/login.php');
+            if ($role === 'admin') {
+                set_flash('success', 'Đăng ký tài khoản Quản trị viên thành công! Bạn có thể đăng nhập vào Cổng Quản trị ngay bây giờ.');
+                redirect('/admin/login.php');
+            } else {
+                set_flash('success', 'Đăng ký tài khoản Khách hàng thành công! Bạn có thể đăng nhập ngay bây giờ.');
+                redirect('/login.php');
+            }
         } catch (Exception $e) {
             $pdo->rollBack();
             $errors[] = 'Đã có lỗi xảy ra trong quá trình tạo tài khoản: ' . $e->getMessage();
@@ -143,6 +150,21 @@ require_once __DIR__ . '/includes/header.php';
                             <div class="col-md-6 mb-3">
                                 <label for="address" class="form-label fw-semibold">Địa chỉ</label>
                                 <input type="text" class="form-control" id="address" name="address" value="<?= e($old_data['address']) ?>" placeholder="Quận/Huyện, Tỉnh/Thành">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="role" class="form-label fw-semibold">Quyền / Loại tài khoản <span class="required-star">*</span></label>
+                            <select class="form-select" id="role" name="role">
+                                <option value="customer" <?= ($old_data['role'] ?? 'customer') === 'customer' ? 'selected' : '' ?>>
+                                    Khách hàng (Đặt phòng & Sử dụng dịch vụ)
+                                </option>
+                                <option value="admin" <?= ($old_data['role'] ?? '') === 'admin' ? 'selected' : '' ?>>
+                                    Quản trị viên (Admin - Quản lý phòng & hệ thống)
+                                </option>
+                            </select>
+                            <div class="form-text small text-muted">
+                                <i class="bi bi-shield-check text-primary me-1"></i>Chọn vai trò tài khoản muốn đăng ký trong hệ thống.
                             </div>
                         </div>
 
